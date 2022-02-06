@@ -1,6 +1,6 @@
 <h2>Welcome to {{ title }}</h2>
 
-<input type="text" [value]="username" />
+<input #userNum type="text" [value]="username" />
 
 <button (click)="buttonClickHandler()">Add name</button>
 
@@ -13,3 +13,6 @@
 <button (click)="toggleText()">Show Text</button>
 <div *ngIf="showText" [class]="classes">VISIBLE</div>
 <div [class.special]="isSpecial">SPECIAL CLASS</div>
+
+<!-- gets the value from the #userNum above -->
+<div>{{ userNum.value }}</div>
