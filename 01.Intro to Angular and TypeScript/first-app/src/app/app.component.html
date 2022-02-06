@@ -5,7 +5,10 @@
 <button (click)="buttonClickHandler()">Add name</button>
 
 <ul>
-  <li *ngFor="let user of users"> 
+  <li *ngFor="let user of users">
     {{ user.name }}
   </li>
 </ul>
+
+<button (click)="toggleText()">Show Text</button>
+<div *ngIf="showText">VISIBLE</div>

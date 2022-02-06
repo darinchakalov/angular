@@ -25,11 +25,17 @@ export class AppComponent {
     },
   ];
 
+  showText = true;
+
   buttonClickHandler(): void {
     let current = this.username++;
     this.users.push({
       name: 'Ivan ' + current,
       age: 20 + current,
     });
+  }
+
+  toggleText(): void {
+    this.showText = !this.showText;
   }
 }
