@@ -11,4 +11,5 @@
 </ul>
 
 <button (click)="toggleText()">Show Text</button>
-<div *ngIf="showText">VISIBLE</div>
+<div *ngIf="showText" [class]="classes">VISIBLE</div>
+<div [class.special]="isSpecial">SPECIAL CLASS</div>

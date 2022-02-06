@@ -27,6 +27,11 @@ export class AppComponent {
 
   showText = true;
 
+  classes = ['class-1', 'class-2'];
+
+  //if the below is true class named special will be applied to the element with [class.special]
+  isSpecial = true;
+
   buttonClickHandler(): void {
     let current = this.username++;
     this.users.push({
