@@ -51,3 +51,17 @@ function identity<T>(arg: T): T {
 
 let output = identity<string>("myString");
 let output2 = identity(5)
+
+class VideoCard{
+	constructor(public model: string){}
+}
+
+class Battery {
+	constructor(public model: string) {}
+}
+
+class Laptop{
+	constructor(public videoCard: VideoCard, public battery: Battery){}
+}
+
+let firstLaptop = new Laptop(new VideoCard('Gforce'), new Battery('Acer battery'))

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IUser } from './interfaces/user';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent {
 
   username = 3;
 
-  users = [
+  usersArr = [
     {
       name: 'Ivan 1',
       age: 21,
@@ -25,10 +26,6 @@ export class AppComponent {
       age: 23,
     },
   ];
-
-  addNewUserHandler(newUser: IUser): void {
-    this.users.push(newUser);
-  }
 
   showText = true;
 
@@ -44,7 +41,7 @@ export class AppComponent {
 
   buttonClickHandler(): void {
     let current = this.username++;
-    this.users.push({
+    this.usersArr.push({
       name: 'Ivan ' + current,
       age: 20 + current,
     });
@@ -53,4 +50,7 @@ export class AppComponent {
   toggleText(): void {
     this.showText = !this.showText;
   }
+
+  //importing the user service in order to take the data
+  constructor(public userService: UserService) {}
 }
