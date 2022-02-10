@@ -23,5 +23,5 @@
 
 
 <div class="content">
-  <app-user-list [userArray]="users"></app-user-list>
+  <app-user-list [userArray]="users" (addUser)="addNewUserHandler($event)"></app-user-list>
 </div>

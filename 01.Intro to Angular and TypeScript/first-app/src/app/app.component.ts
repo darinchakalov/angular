@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IUser } from './interfaces/user';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +25,10 @@ export class AppComponent {
       age: 23,
     },
   ];
+
+  addNewUserHandler(newUser: IUser): void {
+    this.users.push(newUser);
+  }
 
   showText = true;
 
