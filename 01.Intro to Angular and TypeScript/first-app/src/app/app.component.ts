@@ -32,6 +32,11 @@ export class AppComponent {
   //if the below is true class named special will be applied to the element with [class.special]
   isSpecial = true;
 
+  changeTitleHandler(titleInput: HTMLInputElement): void {
+    this.title = titleInput.value;
+    titleInput.value = '';
+  }
+
   buttonClickHandler(): void {
     let current = this.username++;
     this.users.push({

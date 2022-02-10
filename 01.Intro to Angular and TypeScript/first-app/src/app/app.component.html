@@ -1,7 +1,9 @@
 <h2>Welcome to {{ title }}</h2>
 
-<input #userNum type="text" [value]="username" />
+<input #titleInput type="text" />
+<button (click)="changeTitleHandler(titleInput)">Change title</button>
 
+<input #userNum type="text" [value]="username" />
 <button (click)="buttonClickHandler()">Add name</button>
 
 <ul>
@@ -18,3 +20,8 @@
 <div>{{ userNum.value }}</div>
 
 <p>The sym of two + two + four is {{ 2 + 2 + 4 }}</p>
+
+
+<div class="content">
+  <app-user-list [userArray]="users"></app-user-list>
+</div>
