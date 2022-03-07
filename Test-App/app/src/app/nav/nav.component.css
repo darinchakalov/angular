@@ -1,0 +1,20 @@
+ul {
+  list-style: none;
+  display: flex;
+  background: grey;
+  /* justify-content: space-evenly; */
+  margin: 0;
+  padding: 0.5rem;
+}
+
+ul li {
+  transform: scale(1.1);
+  cursor: pointer;
+  color: white;
+  flex: 1;
+  text-align: center;
+}
+
+ul li:hover {
+  transform: scale(1, 1);
+}

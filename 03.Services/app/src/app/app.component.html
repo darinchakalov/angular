@@ -1,0 +1,8 @@
+<p>
+  #######################################################################################
+</p>
+
+<div class="content">
+  <app-user-list *ngIf="users" [userArray]="users"></app-user-list>
+  <div *ngIf="!users">Loading...</div>
+</div>
