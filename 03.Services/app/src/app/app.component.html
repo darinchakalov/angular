@@ -1,8 +1,8 @@
-<p>
-  #######################################################################################
-</p>
+<app-header></app-header>
 
 <div class="content">
-  <app-user-list *ngIf="users" [userArray]="users"></app-user-list>
-  <div *ngIf="!users">Loading...</div>
+  <router-outlet></router-outlet>
+  
 </div>
+
+<app-footer></app-footer>

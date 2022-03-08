@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IUser } from './interfaces/user';
-import { UserService } from './user.service';
+import { UserService } from './user/user.service';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +8,5 @@ import { UserService } from './user.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  users: IUser[] | undefined;
-
-  constructor(public userService: UserService) {}
-
-  ngOnInit(): void {
-    this.userService.loadusers().subscribe((users) => (this.users = users));
-  }
+  
 }

@@ -1,0 +1,71 @@
+header {
+  display: flex;
+  align-items: center;
+}
+
+/* Logo */
+header div {
+  background: rgb(196, 144, 237);
+  background: linear-gradient(
+    87deg,
+    rgba(196, 144, 237, 1) 0%,
+    rgba(105, 160, 224, 1) 100%
+  );
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.25rem 1rem;
+}
+
+/* Logo text */
+header div a {
+  border-radius: 50%;
+  width: 85%;
+  height: 85%;
+  background-color: rgb(53, 57, 64);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+/* Navigation section */
+header nav {
+  flex-basis: 100%;
+  margin-right: 2rem;
+}
+
+header ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+header ul li {
+  padding: 1rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  color: lightgray;
+}
+
+header ul li a {
+  text-decoration: none;
+  background-color: transparent;
+}
+
+header ul li:hover {
+  transform: scale(1.2);
+}
+
+/* Class for the active view button */
+.active {
+  color: white;
+  transform: scale(1.1);
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-style: italic;
+}
