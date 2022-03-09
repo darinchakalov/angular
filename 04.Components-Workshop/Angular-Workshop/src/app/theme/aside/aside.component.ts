@@ -20,7 +20,7 @@ export class AsideComponent {
   fetchRecentPosts(): void {
     this.recentPosts = undefined;
     let posts = this.contentService.loadPosts(5);
-    posts.subscribe((e) => this.items = e);
+    posts.subscribe(posts => this.items = posts);
 
     this.contentService
       .loadPosts(5)
