@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ContentService } from 'src/app/content.service';
 import { IPost } from 'src/app/shared/interfaces';
 
 @Component({
@@ -8,7 +9,21 @@ import { IPost } from 'src/app/shared/interfaces';
 })
 export class AsideComponent {
   @Input() title!: string;
-  @Input() items: IPost[] | undefined;
+  items: IPost[] | undefined;
 
-  constructor() {}
+  recentPosts: IPost[] | undefined;
+
+  constructor(private contentService: ContentService) {
+    this.fetchRecentPosts();
+  }
+
+  fetchRecentPosts(): void {
+    this.recentPosts = undefined;
+    let posts = this.contentService.loadPosts(5);
+    posts.subscribe((e) => this.items = e);
+
+    this.contentService
+      .loadPosts(5)
+      .subscribe((posts) => (this.recentPosts = posts));
+  }
 }
