@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { AsideComponent } from './aside/aside.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, AsideComponent],
-  imports: [CommonModule, HttpClientModule],
+  declarations: [HeaderComponent, FooterComponent],
+  imports: [CommonModule, HttpClientModule, RouterModule],
   //Creating this exports so they can be used in the app module
-  exports: [HeaderComponent, FooterComponent, AsideComponent],
+  exports: [HeaderComponent, FooterComponent],
 })
 export class CoreModule {}

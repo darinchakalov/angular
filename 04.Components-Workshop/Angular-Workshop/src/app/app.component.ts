@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { ContentService } from './content.service';
 import { IPost } from './shared/interfaces';
 
@@ -8,14 +8,16 @@ import { IPost } from './shared/interfaces';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
- recentPosts: IPost[] | undefined;
+  // recentPosts: IPost[] | undefined;
 
-  constructor(private contentService: ContentService) {
-    this.fetchRecentPosts();
-  }
+  // constructor(private contentService: ContentService) {
+  //   this.fetchRecentPosts();
+  // }
 
-  fetchRecentPosts(): void {
-    this.recentPosts = undefined;
-    this.contentService.loadPosts(5).subscribe((posts) => (this.recentPosts = posts));
-  }
+  // fetchRecentPosts(): void {
+  //   this.recentPosts = undefined;
+  //   this.contentService
+  //     .loadPosts(5)
+  //     .subscribe((posts) => (this.recentPosts = posts));
+  // }
 }
