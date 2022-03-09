@@ -15,6 +15,6 @@ export class UserListComponent {
   constructor(public userService: UserService) {}
 
   ngOnInit(): void {
-    this.userService.loadusers().subscribe((users) => (this.users = users));
+    this.userService.loadUsers().subscribe((users) => (this.users = users));
   }
 }

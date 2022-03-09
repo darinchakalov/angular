@@ -1,1 +1,4 @@
 <span>{{ user?.email }} </span>
+<button type="button" [routerLink]="['/user-details', user?.id]">
+  Details
+</button>
