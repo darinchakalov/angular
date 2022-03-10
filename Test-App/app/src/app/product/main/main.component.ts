@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ContentService } from '../content.service';
-import { IProduct } from '../shared/interfaces/product';
+import { ContentService } from '../../content.service';
+import { IProduct } from '../../shared/interfaces/product';
 
 @Component({
   selector: 'app-main',
