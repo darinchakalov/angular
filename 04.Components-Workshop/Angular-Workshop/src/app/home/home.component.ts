@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user/user.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  get isLogged(): boolean {
+    return this.userService.isLoggedIn;
   }
 
+  constructor(private userService: UserService) {}
+
+  ngOnInit(): void {}
 }
