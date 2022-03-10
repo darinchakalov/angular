@@ -1,0 +1,30 @@
+<div class="form-container">
+  <h2>Edit product</h2>
+  <div *ngIf="product">
+    <form>
+      <label for="name">Product name</label>
+      <input
+        type="text"
+        name="name"
+        placeholder="Product name"
+        value="{{ product?.name }}"
+      />
+      <label for="price">Price</label>
+      <input
+        type="number"
+        name="price"
+        placeholder="Price"
+        value="{{product.price}}"
+      />
+      <label for="currency">Currency</label>
+      <input
+        type="text"
+        name="currency"
+        placeholder="Currency ('Eg USD')"
+        value={{product.currency}}
+      />
+      <button class="button" type="submit">Edit</button>
+    </form>
+  </div>
+  <div *ngIf="!product">Loading...</div>
+</div>
