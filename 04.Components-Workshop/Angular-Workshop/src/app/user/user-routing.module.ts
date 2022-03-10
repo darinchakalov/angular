@@ -8,14 +8,26 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    data: {
+      authenticationRequired: false,
+      authenticationFailureRedirectUrl: '/',
+    },
   },
   {
     path: 'register',
     component: RegisterComponent,
+    data: {
+      authenticationRequired: false,
+      authenticationFailureRedirectUrl: '/',
+    },
   },
   {
     path: 'profile',
     component: ProfileComponent,
+    data: {
+      authenticationRequired: true,
+      authenticationFailureRedirectUrl: '/login',
+    },
   },
 ];
 

@@ -5,6 +5,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { LocalStorage } from './injection-tokens';
+import { AuthActivate } from './guards/auth.activate';
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent],
@@ -15,8 +16,8 @@ import { LocalStorage } from './injection-tokens';
     {
       provide: LocalStorage,
       useValue: window.localStorage,
-      //video 59th minute
     },
+    AuthActivate,
   ],
 })
 export class CoreModule {}
