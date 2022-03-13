@@ -23,6 +23,7 @@ export class AuthActivate implements CanActivate {
     | Promise<boolean | UrlTree> {
     const { authenticationRequired, authenticationFailureRedirectUrl } =
       route.data;
+    console.log('here');
 
     if (
       typeof authenticationRequired === 'boolean' &&
