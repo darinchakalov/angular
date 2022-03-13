@@ -23,7 +23,6 @@ export class AuthActivate implements CanActivate {
     | Promise<boolean | UrlTree> {
     const { authenticationRequired, authenticationFailureRedirectUrl } =
       route.data;
-    console.log('here');
 
     if (
       typeof authenticationRequired === 'boolean' &&
@@ -31,7 +30,17 @@ export class AuthActivate implements CanActivate {
     ) {
       return true;
     }
+    // const loginRedirectUrl = route.url.reduce(
+    //   (acc, s) => `${acc}${s.path}`,
+    //   '/'
+    // );
 
-    return this.router.parseUrl(authenticationFailureRedirectUrl || '/');
+    let authRedirectUrl = authenticationFailureRedirectUrl;
+    if (authenticationRequired) {
+      const loginRedirectUrl = route.routeConfig?.path || '';
+      authRedirectUrl += `?redirectUrl=/${loginRedirectUrl}`;
+    }
+
+    return this.router.parseUrl(authRedirectUrl || '/');
   }
 }
