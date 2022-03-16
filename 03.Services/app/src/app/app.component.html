@@ -2,7 +2,33 @@
 
 <div class="content">
   <router-outlet></router-outlet>
-  
 </div>
+
+<button (click)="toggleActive()" appHighlight [isActive]="isActive">
+  Toggle Active
+</button>
+<ng-template #isActiveTemplate> IS ACTIVE - TRUE </ng-template>
+<ng-template #isNotActiveTemplate> IS ACTIVE - FALSE </ng-template>
+
+<ng-container
+  *ngTemplateOutlet="isActive ? isActiveTemplate : isNotActiveTemplate"
+></ng-container>
+
+<br />
+<!-- first method  -->
+<ng-template [appMyIf]="isActive" let-data="data" let-test>
+  <ng-container>
+    {{ data }}
+    {{ test }}
+    FIRST METHOD
+  </ng-container>
+</ng-template>
+<br />
+<!-- second method -->
+<ng-container *appMyIf="isActive; let test; let data = data">
+  {{ data }}
+  {{ test }}
+  SECOND METHOD
+</ng-container>
 
 <app-footer></app-footer>
