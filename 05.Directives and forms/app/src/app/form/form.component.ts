@@ -14,6 +14,8 @@ export class FormComponent implements AfterViewInit {
   buildings!: string[];
   ngBuldings!: string;
 
+  img = '';
+
   ngAfterViewInit(): void {
     this.codes = ['+359', '+555'];
     this.ngCodes = this.codes[0];

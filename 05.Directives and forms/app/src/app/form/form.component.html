@@ -68,17 +68,6 @@
         />
       </p>
 
-      <!-- if error -->
-      <div *ngIf="telInput.errors" class="alert alert-danger">
-        <p
-          *ngIf="telInput.errors['minlength'] || telInput.errors['maxlength']"
-          class="error"
-        >
-          Phone number should be 9 digits
-        </p>
-      </div>
-      <!-- end if error -->
-
       <p class="field field-icon">
         <label for="building"
           ><span><i class="fas fa-building"></i></span
@@ -95,35 +84,79 @@
         </select>
       </p>
 
+      <div ngModelGroup="passData" #passData="ngModelGroup">
+        <p class="field field-icon">
+          <label for="password"
+            ><span><i class="fas fa-lock"></i></span
+          ></label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="******"
+            ngModel
+            minlength="3"
+            maxlength="16"
+            #passInput="ngModel"
+          />
+        </p>
+
+        <p class="field field-icon">
+          <label for="re-password"
+            ><span><i class="fas fa-lock"></i></span
+          ></label>
+          <input
+            type="password"
+            name="re-password"
+            id="re-password"
+            placeholder="******"
+            ngModel
+            minlength="3"
+            maxlength="16"
+            #rePassInput="ngModel"
+          />
+        </p>
+      </div>
+
+      <!-- if error -->
+      <div
+        *ngIf="passData.invalid && passData.touched"
+        class="alert alert-danger"
+      >
+        <p class="error">
+          Both passwords should be between 3 and 16 characters long
+        </p>
+      </div>
+      <!-- end if error -->
+
       <p class="field field-icon">
         <label for="password"
-          ><span><i class="fas fa-lock"></i></span
+          ><span><i class="fa fa-image"></i></span
         ></label>
         <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="******"
+          type="url"
+          name="img"
           ngModel
-          minlength="3"
-          maxlength="16"
+          #imgInput="ngModel"
+          placeholder="http://images.com/1.jpg"
+          appImgValidation
+          [(ngModel)]="img"
         />
       </p>
 
-      <p class="field field-icon">
-        <label for="re-password"
-          ><span><i class="fas fa-lock"></i></span
-        ></label>
-        <input
-          type="re-password"
-          name="re-password"
-          id="re-password"
-          placeholder="******"
-          ngModel
-          minlength="3"
-          maxlength="16"
-        />
-      </p>
+      <!-- if error -->
+      <div
+        *ngIf="imgInput.errors && imgInput.touched"
+        class="alert alert-danger"
+      >
+        <p *ngIf="imgInput.errors['invalidProtocol']" class="error">
+          Url should start with http or https
+        </p>
+        <p *ngIf="imgInput.errors['invalidExtention']" class="error">
+          Url should end with jpg or png
+        </p>
+      </div>
+      <!-- end if error -->
 
       <p>
         <button>Create Account</button>
