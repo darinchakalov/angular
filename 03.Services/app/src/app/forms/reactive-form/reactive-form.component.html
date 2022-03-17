@@ -1,0 +1,32 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" name="email" id="email" formControlName="email" />
+    <ul *ngIf="form.get('email')!.errors && form.get('email')!.touched">
+      <li *ngIf="form.get('email')!.errors?.required">Email is required</li>
+      <li *ngIf="form.get('email')!.errors?.email">Email is invalid</li>
+    </ul>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" name="password" formControlName="password" />
+    <ul *ngIf="form.get('password')!.errors && form.get('password')!.touched">
+      <li *ngIf="form.get('password')!.errors?.required">
+        password is required
+      </li>
+      <li *ngIf="form.get('password')!.errors?.minlength">password length</li>
+    </ul>
+  </div>
+  <div class="form-group">
+    <label for="repass">Repeat Password</label>
+    <input type="password" name="repass" formControlName="repass" />
+    <ul *ngIf="form.get('repass')!.errors && form.get('repass')!.touched">
+      <li *ngIf="form.get('repass')!.errors?.required">password is required</li>
+      <li *ngIf="form.get('repass')!.errors?.minlength">password length</li>
+      <li *ngIf="form.get('repass')!.errors?.confirmPasswordValidator">
+        password match
+      </li>
+    </ul>
+  </div>
+  <button>Submit</button>
+</form>
