@@ -1,1 +1,60 @@
-<p>register works!</p>
+<form #form="ngForm" (ngSubmit)="registerHandler(form)">
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input
+      type="text"
+      name="email"
+      #emailInput="ngModel"
+      ngModel
+      required
+      email
+    />
+    <ul *ngIf="emailInput.invalid && emailInput.touched" class="errors">
+      <li *ngIf="emailInput.errors?.required">Email is required</li>
+      <li *ngIf="emailInput.errors?.email">Email should be valid</li>
+    </ul>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      type="password"
+      name="password"
+      #passwordInput="ngModel"
+      ngModel
+      required
+      [minlength]="6"
+    />
+    <ul *ngIf="passwordInput.invalid && passwordInput.touched" class="errors">
+      <li *ngIf="passwordInput.errors?.required">Password is required</li>
+      <li *ngIf="passwordInput.errors?.minlength">
+        Password should be at least 6 characters
+      </li>
+    </ul>
+  </div>
+
+  <div class="form-group">
+    <label for="repass">Repeat password</label>
+    <input
+      type="password"
+      name="repass"
+      #repassInput="ngModel"
+      ngModel
+      required
+      [minlength]="6"
+      appSameValue="password"
+    />
+    <ul *ngIf="repassInput.invalid && repassInput.touched" class="errors">
+      <li *ngIf="repassInput.errors?.required">Re-Password is required</li>
+      <li *ngIf="repassInput.errors?.minlength">
+        Re-Password should be at least 6 characters
+      </li>
+      <li *ngIf="repassInput.errors!.sameValue">
+        Paswords need to match: pass:
+        {{ repassInput.errors!.sameValue.password }} repass:
+        {{ repassInput.errors!.sameValue.repass }}
+      </li>
+    </ul>
+  </div>
+  <button [disabled]="form.invalid">Register</button>
+</form>
