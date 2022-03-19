@@ -11,5 +11,5 @@ export class RegisterComponent {
 
   constructor(private userService: UserService) {}
 
-  register(email: string, password: string): void {}
+  register(username: string, email: string, password: string): void {}
 }

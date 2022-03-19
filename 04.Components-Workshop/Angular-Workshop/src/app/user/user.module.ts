@@ -5,8 +5,8 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UserRoutingModule } from './user-routing.module';
 import { FormsModule } from '@angular/forms';
-import { EmailValidatorsDirective } from './validators/email-validators.directive';
-import { PassMatchValidatorDirective } from './validators/pass-match-validator.directive';
+import { EmailValidatorsDirective } from '../shared/validators/email-validators.directive';
+import { PassMatchValidatorDirective } from '../shared/validators/pass-match-validator.directive';
 
 @NgModule({
   declarations: [

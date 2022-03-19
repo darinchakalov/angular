@@ -111,13 +111,17 @@
           ngModel
           required
           #repassInput="ngModel"
+          appPassMatchValidator
+          pass="{{ passInput.value }}"
         />
       </p>
       <ng-container *ngIf="repassInput.touched">
         <p *ngIf="repassInput.errors?.required" class="error">
           Repeat password is required!
         </p>
-        <p class="error">Repeat Password does not match password!</p>
+        <p *ngIf="repassInput.errors?.passNoMatch" class="error">
+          Repeat Password does not match password!
+        </p>
       </ng-container>
 
       <button disabled>Create Account</button>
