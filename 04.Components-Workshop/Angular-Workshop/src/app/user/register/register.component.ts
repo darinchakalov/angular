@@ -7,6 +7,8 @@ import { UserService } from '../user.service';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
+  email = '';
+
   constructor(private userService: UserService) {}
 
   register(email: string, password: string): void {}

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../user.service';
 
@@ -14,10 +15,10 @@ export class LoginComponent {
     private router: Router
   ) {}
 
-  login(email: string, password: string): void {
-    this.userService.login(email, password);
-    const redirectUrl =
-      this.activatedRoute.snapshot.queryParams['redirectUrl'] || '/';
-    this.router.navigate([redirectUrl]);
+  login(form: NgForm): void {
+    if (form.invalid) {
+      return;
+    }
+    console.log(form.value);
   }
 }

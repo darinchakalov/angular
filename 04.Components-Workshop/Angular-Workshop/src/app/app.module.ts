@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContentService } from './content.service';
 import { CoreModule } from './core/core.module';
-import { HomeComponent } from './shared/home/home.component';
 import { ThemesModule } from './theme/theme.module';
 import { UserModule } from './user/user.module';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -14,10 +13,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
   declarations: [AppComponent, NotFoundComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     CoreModule,
     UserModule,
     ThemesModule,
+    AppRoutingModule,
   ],
   providers: [ContentService],
   bootstrap: [AppComponent],

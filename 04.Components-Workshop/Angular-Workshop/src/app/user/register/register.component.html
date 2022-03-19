@@ -1,65 +1,131 @@
 <div class="container">
-        <form class="register" action="" method="post">
+  <form #form="ngForm" class="register" action="" method="post">
+    <fieldset>
+      <h2>Registration Form</h2>
 
-            <fieldset>
-                <h2>Registration Form</h2>
+      <!-- username -->
+      <p class="field field-icon">
+        <label for="username"
+          ><span><i class="fas fa-user"></i></span
+        ></label>
+        <input
+          class="input-error"
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Johny"
+          ngModel
+          #usernameInput="ngModel"
+          required
+          minlength="5"
+        />
+      </p>
+      <ng-container *ngIf="usernameInput.touched">
+        <p *ngIf="usernameInput.errors?.required" class="error">
+          Username is required!
+        </p>
+        <p *ngIf="usernameInput.errors?.minlength" class="error">
+          Username should be at least 5 characters long
+        </p>
+      </ng-container>
 
-                <!-- username -->
-                <p class="field field-icon">
-                    <label for="username"><span><i class="fas fa-user"></i></span></label>
-                    <input class="input-error" type="text" name="username" id="username" placeholder="Johny">
-                </p>
-                <p class="error">
-                    Username is required!
-                </p>
+      <!-- email -->
+      <p class="field field-icon">
+        <label for="email"
+          ><span><i class="fas fa-envelope"></i></span
+        ></label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="john.doe@gmail.com"
+          ngModel
+          #emailInput="ngModel"
+          required
+          minlength="6"
+          appEmailValidators
+          [(ngModel)]="email"
+        />
+      </p>
+      <ng-container *ngIf="emailInput.touched">
+        <p *ngIf="emailInput.errors?.required" class="error">
+          Email is required!
+        </p>
+        <p *ngIf="emailInput.errors?.invalidEmail" class="error">
+          Email is not valid!
+        </p>
+      </ng-container>
 
-                <!-- email -->
-                <p class="field field-icon">
-                    <label for="email"><span><i class="fas fa-envelope"></i></span></label>
-                    <input type="email" name="email" id="email" placeholder="john.doe@gmail.com">
-                </p>
-                <!-- <p class="error">
-                    Email is required!
-                </p>
-                <p class="error">
-                    Email is not valid!
-                </p> -->
+      <!-- telephone -->
+      <p class="field field-icon">
+        <label for="tel"
+          ><span><i class="fas fa-phone"></i></span
+        ></label>
+        <select name="select-tel" id="select-tel" class="tel">
+          <option value="00359">+359</option>
+        </select>
+        <input
+          type="text"
+          name="tel"
+          id="tel"
+          placeholder="885 888 888"
+          ngModel
+        />
+      </p>
 
-                <!-- telephone -->
-                <p class="field field-icon">
-                    <label for="tel"><span><i class="fas fa-phone"></i></span></label>
-                    <select name="select-tel" id="select-tel" class="tel">
-                        <option value="00359">+359</option>
-                    </select>
-                    <input type="text" name="tel" id="tel" placeholder="885 888 888">
-                </p>
+      <!-- password -->
+      <p class="field field-icon">
+        <label for="password"
+          ><span><i class="fas fa-lock"></i></span
+        ></label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="******"
+          ngModel
+          required
+          minlength="5"
+          #passInput="ngModel"
+        />
+      </p>
+      <ng-container *ngIf="passInput.touched">
+        <p *ngIf="passInput.errors?.required" class="error">
+          Password is required!
+        </p>
+        <p *ngIf="passInput.errors?.minlength" class="error">
+          Password must be at least 5 characters!
+        </p>
+      </ng-container>
 
-                <!-- password -->
-                <p class="field field-icon">
-                    <label for="password"><span><i class="fas fa-lock"></i></span></label>
-                    <input type="password" name="password" id="password" placeholder="******">
-                </p>
-                <!-- <p class="error">
-                    Password is required!
-                </p>
-                <p class="error">
-                    Password must be at least 4 characters!
-                </p> -->
+      <!-- rePassword -->
+      <p class="field field-icon">
+        <label for="rePassword"
+          ><span><i class="fas fa-lock"></i></span
+        ></label>
+        <input
+          type="password"
+          name="rePassword"
+          id="rePassword"
+          placeholder="******"
+          ngModel
+          required
+          #repassInput="ngModel"
+        />
+      </p>
+      <ng-container *ngIf="repassInput.touched">
+        <p *ngIf="repassInput.errors?.required" class="error">
+          Repeat password is required!
+        </p>
+        <p class="error">Repeat Password does not match password!</p>
+      </ng-container>
 
-                <!-- rePassword -->
-                <p class="field field-icon">
-                    <label for="rePassword"><span><i class="fas fa-lock"></i></span></label>
-                    <input type="password" name="rePassword" id="rePassword" placeholder="******">
-                </p>
-                <!-- <p class="error">Repeat Password does not match password!</p> -->
+      <button disabled>Create Account</button>
 
-                <button disabled>Create Account</button>
-
-                <p class="text-center">
-                    Have an account?
-                    <a href="#">Log In</a>
-                </p>
-
-            </fieldset>
-        </form>
-    </div>
+      <p class="text-center">
+        Have an account?
+        <a href="#">Log In</a>
+      </p>
+    </fieldset>
+  </form>
+</div>
