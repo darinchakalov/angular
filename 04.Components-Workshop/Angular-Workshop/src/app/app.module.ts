@@ -8,6 +8,7 @@ import { CoreModule } from './core/core.module';
 import { ThemesModule } from './theme/theme.module';
 import { UserModule } from './user/user.module';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, NotFoundComponent],
@@ -15,6 +16,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     BrowserModule,
     CoreModule,
     UserModule,
+    FormsModule,
     ThemesModule,
     AppRoutingModule,
   ],

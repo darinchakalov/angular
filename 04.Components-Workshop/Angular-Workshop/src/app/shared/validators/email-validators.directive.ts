@@ -19,7 +19,6 @@ import {
 export class EmailValidatorsDirective implements Validator {
   validate(control: AbstractControl): ValidationErrors | null {
     let isValidEmail = /^[A-Za-z0-9_.]{6,}@gmail.(com|bg)$/.test(control.value);
-    console.log(isValidEmail);
     
     if (!isValidEmail) {
       return {

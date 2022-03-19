@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { IUser } from '../shared/interfaces';
+import { environment } from 'src/environments/environment';
+import { tap } from 'rxjs/operators';
 
-const apiUrl = 
-
+const apiUrl = environment.apiURl;
 
 @Injectable({
   providedIn: 'root',
@@ -17,8 +18,7 @@ export class UserService {
   }
 
   constructor(
-    private http: HttpClient,
-    // @Inject(LocalStorage) private localStorage: Window['localStorage']
+    private http: HttpClient // @Inject(LocalStorage) private localStorage: Window['localStorage']
   ) {
     // try {
     //   const localStorageUser = this.localStorage.getItem('<USER>') || 'ERROR';
@@ -41,7 +41,17 @@ export class UserService {
     // this.localStorage.removeItem('<USER>');
   }
 
-  register(data: { username: string; email: string; tel: string, pass: string }) {
-    return this.http.post<IUser>('')
+  register(data: {
+    username: string;
+    email: string;
+    password: string;
+    repass: string;
+    tel: string;
+  }) {
+    return this.http
+      .post<IUser>(`${apiUrl}/register`, data, {
+        withCredentials: true,
+      })
+      .pipe(tap((user) => (this.user = user)));
   }
 }

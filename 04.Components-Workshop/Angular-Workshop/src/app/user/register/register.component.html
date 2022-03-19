@@ -1,5 +1,11 @@
 <div class="container">
-  <form #form="ngForm" class="register" action="" method="post">
+  <form
+    #form="ngForm"
+    class="register"
+    action=""
+    method="post"
+    (ngSubmit)="register()"
+  >
     <fieldset>
       <h2>Registration Form</h2>
 
@@ -124,7 +130,7 @@
         </p>
       </ng-container>
 
-      <button disabled>Create Account</button>
+      <button>Create Account</button>
 
       <p class="text-center">
         Have an account?
