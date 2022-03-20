@@ -23,7 +23,9 @@ export class LoginComponent {
     }
     this.userService.login(this.form?.value).subscribe({
       next: () => {
-        this.router.navigate(['/']);
+        const redirectUrl =
+          this.activatedRoute.snapshot.queryParams['redirectUrl'] || '/';
+        this.router.navigate([redirectUrl]);
       },
       error: (err) => {
         console.log(err);

@@ -24,4 +24,10 @@ export class ContentService {
     let posts = this.http.get<IPost[]>(`${API_URL}/posts${query}`);
     return posts;
   }
+
+  createNewTheme(data: any) {
+    return this.http.post<ITheme>(`${API_URL}/themes`, data, {
+      withCredentials: true,
+    });
+  }
 }

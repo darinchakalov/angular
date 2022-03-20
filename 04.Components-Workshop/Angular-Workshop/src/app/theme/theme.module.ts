@@ -6,6 +6,7 @@ import { ThemeRoutingModule } from './theme-routing.module';
 import { AsideComponent } from './aside/aside.component';
 import { ThemeComponent } from './theme/theme.component';
 import { SharedModule } from '../shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,6 @@ import { SharedModule } from '../shared/shared.module';
     AsideComponent,
     ThemeComponent,
   ],
-  imports: [CommonModule, ThemeRoutingModule, SharedModule],
+  imports: [CommonModule, ThemeRoutingModule, SharedModule, FormsModule],
 })
 export class ThemesModule {}
