@@ -10,7 +10,7 @@ const apiUrl = environment.apiURl;
   providedIn: 'root',
 })
 export class UserService {
-  user: IUser | undefined;
+  user: IUser | null | undefined = undefined;
 
   get isLoggedIn(): boolean {
     //double explamation mark casts variable to boolean
@@ -36,8 +36,10 @@ export class UserService {
     // this.localStorage.setItem('<USER>', JSON.stringify(this.user));
   }
 
-  logout(): void {
-    this.user = undefined;
+  logout() {
+    return this.http
+      .post<IUser>(`${apiUrl}/logout`, {}, { withCredentials: true })
+      .pipe(tap(() => (this.user = null)));
     // this.localStorage.removeItem('<USER>');
   }
 
@@ -50,6 +52,14 @@ export class UserService {
   }) {
     return this.http
       .post<IUser>(`${apiUrl}/register`, data, {
+        withCredentials: true,
+      })
+      .pipe(tap((user) => (this.user = user)));
+  }
+
+  getProfileInfo() {
+    return this.http
+      .get<IUser>(`${apiUrl}/users/profile`, {
         withCredentials: true,
       })
       .pipe(tap((user) => (this.user = user)));

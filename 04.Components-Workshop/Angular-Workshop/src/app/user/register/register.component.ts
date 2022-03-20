@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class RegisterComponent {
 
   email = '';
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   register(): void {
     if (this.form?.invalid) {
@@ -20,7 +21,7 @@ export class RegisterComponent {
     }
     this.userService.register(this.form!.value).subscribe({
       next: () => {
-        console.log('ok');
+        this.router.navigate(['/']);
       },
       error: (err) => {
         console.log(err);
