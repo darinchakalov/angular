@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../user.service';
@@ -9,16 +9,25 @@ import { UserService } from '../user.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  @ViewChild(NgForm) form: NgForm | undefined;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
     private router: Router
   ) {}
 
-  login(form: NgForm): void {
-    if (form.invalid) {
+  login(): void {
+    if (this.form?.invalid) {
       return;
     }
-    console.log(form.value);
+    this.userService.login(this.form?.value).subscribe({
+      next: () => {
+        this.router.navigate(['/']);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 }

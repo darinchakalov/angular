@@ -28,13 +28,14 @@ export class UserService {
     // }
   }
 
-  login(email: string, username: string): void {
-    this.user = {
-      email,
-      username: 'Johnys',
-    };
-    // this.localStorage.setItem('<USER>', JSON.stringify(this.user));
+  login(data: { username: string; password: string }) {
+    return this.http
+      .post<IUser>(`${apiUrl}/login`, data, {
+        withCredentials: true,
+      })
+      .pipe(tap((user) => (this.user = user)));
   }
+  // this.localStorage.setItem('<USER>', JSON.stringify(this.user));
 
   logout() {
     return this.http
