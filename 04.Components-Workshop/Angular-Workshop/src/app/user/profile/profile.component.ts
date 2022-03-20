@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { IUser } from 'src/app/shared/interfaces';
 import { UserService } from '../user.service';
 
@@ -10,9 +11,22 @@ import { UserService } from '../user.service';
 export class ProfileComponent {
   user: IUser | undefined;
 
-  constructor(private userService: UserService) {}
+  @ViewChild(NgForm) form: NgForm | undefined;
 
-  getDetails() {
+  editMode: boolean = false;
+
+  constructor(private userService: UserService) {
+    this.getDetails();
+  }
+
+  getDetails(): void {
     this.userService.getProfileInfo().subscribe((user) => (this.user = user));
+  }
+
+  updateDetails() {
+    this.userService
+      .updateUserInfo(this.form?.value)
+      .subscribe((user) => (this.user = user));
+    this.editMode = !this.editMode;
   }
 }

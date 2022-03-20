@@ -21,7 +21,6 @@ export class ThemeComponent {
   fetchTheme(): void {
     this.theme = undefined;
     const id = this.activateRoute.snapshot.params['themeId'];
-    console.log(id);
 
     this.contentService
       .loadSingleTheme(id)

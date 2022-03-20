@@ -65,4 +65,12 @@ export class UserService {
       })
       .pipe(tap((user) => (this.user = user)));
   }
+
+  updateUserInfo(data: { username: string; email: string; tel?: string }) {
+    return this.http
+      .put<IUser>(`${apiUrl}/users/profile`, data, {
+        withCredentials: true,
+      })
+      .pipe(tap((user) => (this.user = user)));
+  }
 }
