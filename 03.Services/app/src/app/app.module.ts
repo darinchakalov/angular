@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { UserModule } from './user/user.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { AboutComponent } from './about/about.component';
@@ -25,7 +24,6 @@ import { MyFormsModule } from './forms/forms.module';
   imports: [
     BrowserModule,
     HttpClientModule,
-    UserModule,
     CoreModule,
     SharedModule,
     AppRoutingModule,

@@ -1,4 +1,4 @@
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './forms/login/login.component';
 import { ReactiveFormComponent } from './forms/reactive-form/reactive-form.component';
@@ -9,7 +9,11 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/user-list',
+    redirectTo: '/about',
+  },
+  {
+    path: 'user',
+    loadChildren: () => import(`./user/user.module`).then((m) => m.UserModule),
   },
   {
     path: 'about',
@@ -33,4 +37,6 @@ const routes: Routes = [
   },
 ];
 
-export const AppRoutingModule = RouterModule.forRoot(routes);
+export const AppRoutingModule = RouterModule.forRoot(routes, {
+  preloadingStrategy: PreloadAllModules,
+});
