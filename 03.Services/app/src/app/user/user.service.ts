@@ -1,22 +1,31 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { IUser } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
+  private users = new BehaviorSubject<IUser[] | null>(null);
+  users$ = this.users.asObservable();
+
+  private user = new BehaviorSubject<IUser | null>(null);
+  user$ = this.user.asObservable();
+
   constructor(private http: HttpClient) {}
-  loadUsers(search: string = '') {
+
+  loadUsers = (search: string = '') => {
     const query = search ? `?email_like=${search}` : '';
-    return this.http.get<IUser[]>(`/api/users${query}`);
-  }
+    this.http
+      .get<IUser[]>(`/api/users${query}`)
+      .subscribe((users) => this.users.next(users));
+  };
 
-  loadUser(id: number) {
-    return this.http.get<IUser>(`/api/users/${id}`);
-  }
-
-  // addNewUserHandler(newUser: IUser): void {
-  //   this.users.push(newUser);
-  // }
+  loadUser = (id: number) => {
+    this.user.next(null);
+    this.http
+      .get<IUser>(`/api/users/${id}`)
+      .subscribe((user) => this.user.next(user));
+  };
 }

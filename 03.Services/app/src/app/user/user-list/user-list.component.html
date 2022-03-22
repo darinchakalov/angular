@@ -1,8 +1,13 @@
 <!-- <app-user-list *ngIf="users" [userArray]="users"></app-user-list> -->
-<div class="container">
-  <app-user-list-item
-    *ngFor="let user of users"
-    [user]="user"
-  ></app-user-list-item>
+<input #searchInput [class.hidden]="!(users$ | async)" type="text" />
+<div *ngIf="(users$ | async) as users">
+  <button (click)="loadUsers()">Reload</button>
+  <button (click)="searchButtonHandler(searchInput)">Search</button>
+  <div class="container">
+    <app-user-list-item
+      *ngFor="let user of users"
+      [user]="user"
+    ></app-user-list-item>
+  </div>
 </div>
-<app-loader *ngIf="!users"></app-loader>
+<app-loader *ngIf="!(users$ | async)"></app-loader>

@@ -9,30 +9,32 @@ import { UserService } from '../user.service';
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.css'],
 })
-export class UserDetailComponent implements OnInit {
-  user: IUser | undefined;
+export class UserDetailComponent {
+  user$ = this.userService.user$;
 
   constructor(
-    private activateRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private userService: UserService
-  ) {}
-
-  ngOnInit(): void {
-    //With RxJS
-    this.activateRoute.params
-      .pipe(
-        tap(() => (this.user = undefined)),
-        switchMap(({ id }) =>
-          this.userService.loadUser(id)
-        )
-      )
-      .subscribe((user) => (this.user = user));
-
-    //With snapshot
-    // this.userService
-    //   .loadUser(this.activateRoute.snapshot.params['id'])
-    //   .subscribe((user) => {
-    //     this.user = user;
-    //   });
+  ) {
+    activatedRoute.params.subscribe(({ id }) => this.userService.loadUser(id));
   }
+
+  // ngOnInit(): void {
+  //   //With RxJS
+  //   this.activateRoute.params
+  //     .pipe(
+  //       tap(() => (this.user = undefined)),
+  //       switchMap(({ id }) =>
+  //         this.userService.loadUser(id)
+  //       )
+  //     )
+  //     .subscribe((user) => (this.user = user));
+
+  //With snapshot
+  // this.userService
+  //   .loadUser(this.activateRoute.snapshot.params['id'])
+  //   .subscribe((user) => {
+  //     this.user = user;
+  //   });
+  // }
 }

@@ -1,10 +1,10 @@
-<div *ngIf="user">
+<div *ngIf="(user$ | async)">
   <div>
-    {{ user?.username }}
+    <!-- {{ user }} -->
   </div>
-  <button type="button" [routerLink]="['/user/details', user.id + 1]">
+  <button type="button" [routerLink]="['/user/details']">
     Next user
   </button>
 </div>
-<app-loader *ngIf="!user"></app-loader>
+<app-loader *ngIf="!(user$ | async)"></app-loader>
 <button type="button" routerLink="/user-list">Back</button>
