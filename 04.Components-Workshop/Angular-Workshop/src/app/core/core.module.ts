@@ -6,6 +6,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { LocalStorage } from './injection-tokens';
 import { AuthActivate } from './guards/auth.activate';
+import { appInterceptorProvider } from './app.interceptor';
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent],
@@ -18,6 +19,7 @@ import { AuthActivate } from './guards/auth.activate';
       useValue: window.localStorage,
     },
     AuthActivate,
+    appInterceptorProvider,
   ],
 })
 export class CoreModule {}

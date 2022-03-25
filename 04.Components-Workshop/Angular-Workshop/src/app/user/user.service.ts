@@ -1,10 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { IUser } from '../shared/interfaces';
-import { environment } from 'src/environments/environment';
 import { tap } from 'rxjs/operators';
-
-const apiUrl = environment.apiURl;
 
 @Injectable({
   providedIn: 'root',
@@ -30,16 +27,14 @@ export class UserService {
 
   login(data: { username: string; password: string }) {
     return this.http
-      .post<IUser>(`${apiUrl}/login`, data, {
-        withCredentials: true,
-      })
+      .post<IUser>(`/api/login`, data)
       .pipe(tap((user) => (this.user = user)));
   }
   // this.localStorage.setItem('<USER>', JSON.stringify(this.user));
 
   logout() {
     return this.http
-      .post<IUser>(`${apiUrl}/logout`, {}, { withCredentials: true })
+      .post<IUser>(`/api/logout`, {})
       .pipe(tap(() => (this.user = null)));
     // this.localStorage.removeItem('<USER>');
   }
@@ -52,25 +47,19 @@ export class UserService {
     tel: string;
   }) {
     return this.http
-      .post<IUser>(`${apiUrl}/register`, data, {
-        withCredentials: true,
-      })
+      .post<IUser>(`/api/register`, data)
       .pipe(tap((user) => (this.user = user)));
   }
 
   getProfileInfo() {
     return this.http
-      .get<IUser>(`${apiUrl}/users/profile`, {
-        withCredentials: true,
-      })
+      .get<IUser>(`/api/users/profile`)
       .pipe(tap((user) => (this.user = user)));
   }
 
   updateUserInfo(data: { username: string; email: string; tel?: string }) {
     return this.http
-      .put<IUser>(`${apiUrl}/users/profile`, data, {
-        withCredentials: true,
-      })
+      .put<IUser>(`/api/users/profile`, data)
       .pipe(tap((user) => (this.user = user)));
   }
 }
