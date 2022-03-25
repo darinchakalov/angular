@@ -7,7 +7,7 @@
           <h3>{{ item.themeId.themeName }}</h3>
           <p>{{ item.userId.username }}</p>
           <p>
-            <span>{{ item.created_at }}</span>
+            <span>Posted: {{ item.created_at | timeDiff }}</span>
           </p>
         </a>
       </div>
