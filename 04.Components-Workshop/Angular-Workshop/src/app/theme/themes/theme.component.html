@@ -7,12 +7,12 @@
         <div class="theme-name-wrapper">
           <div class="theme-name">
             <a [routerLink]="['/themes', theme._id]" class="normal">
-              <h2>{{ theme.themeName }}</h2>
+              <h2>{{ theme.themeName | shorten: 10 }}</h2>
             </a>
             <div class="columns">
               <div>
                 <p>
-                  Date: <time>{{ theme.created_at }}</time>
+                  Date: <time>{{ theme.created_at | changeDate }}</time>
                 </p>
                 <div class="nick-name">
                   <p>
