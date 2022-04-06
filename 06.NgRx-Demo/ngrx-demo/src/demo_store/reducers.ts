@@ -1,9 +1,11 @@
 export interface IAppState {
   counter: number;
+  value: any;
 }
 
 const initialState: IAppState = {
   counter: 0,
+  value: null,
 };
 
 export function appReducer(state: any = initialState, action: any) {

@@ -14,29 +14,18 @@ export class UserService {
     return !!this.user;
   }
 
-  constructor(
-    private http: HttpClient // @Inject(LocalStorage) private localStorage: Window['localStorage']
-  ) {
-    // try {
-    //   const localStorageUser = this.localStorage.getItem('<USER>') || 'ERROR';
-    //   this.user = JSON.parse(localStorageUser);
-    // } catch (error) {
-    //   this.user = undefined;
-    // }
-  }
+  constructor(private http: HttpClient) {}
 
   login(data: { username: string; password: string }) {
     return this.http
       .post<IUser>(`/api/login`, data)
       .pipe(tap((user) => (this.user = user)));
   }
-  // this.localStorage.setItem('<USER>', JSON.stringify(this.user));
 
   logout() {
     return this.http
       .post<IUser>(`/api/logout`, {})
       .pipe(tap(() => (this.user = null)));
-    // this.localStorage.removeItem('<USER>');
   }
 
   register(data: {

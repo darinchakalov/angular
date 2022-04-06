@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { incrementCounter } from 'src/+store/actions';
-import { getCounter } from 'src/+store/selectors';
+import { incrementCounter } from 'src/demo_store/actions';
+import { getCounter } from 'src/demo_store/selectors';
 
 @Component({
   selector: 'app-root',

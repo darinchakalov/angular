@@ -4,9 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
-import { appReducer } from 'src/+store/reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
+import { scoreboardReducer } from './+store/reducer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,7 +13,7 @@ import { environment } from '../environments/environment';
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot({
-      state: appReducer,
+      state: scoreboardReducer,
     }),
     StoreDevtoolsModule.instrument({}),
   ],

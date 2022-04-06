@@ -1,5 +1,4 @@
 import { Component, Output } from '@angular/core';
-import { retry } from 'rxjs';
 import { UserService } from './user/user.service';
 
 @Component({
